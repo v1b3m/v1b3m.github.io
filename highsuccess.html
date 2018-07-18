@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +15,9 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/media-queries.css">
   <link rel="stylesheet" href="css/style.css">
-  <title>Home</title>
+    <title> High Success Ratings</title>
 </head>
+
 <body>
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -44,20 +46,57 @@
           <a class="nav-link" href="waitingjobs.html">Waiting Jobs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="ready_jobs.html">Ready Jobs</a>
+          <a class="nav-link" href="waitingjobs.html">Ready Jobs</a>
         </li>
-
       </ul>
 
     </div>
     </nav>
-    <br/><br/>
+    <br>
+    <h1>Most Successfull Jobs</h1>
+    <br>
     <div class="text-center">
-      <h1>Average server processing</h1>
-        <span class="chart" data-percent="90"></span>
-      <h5><span>1000 Jobs/min <i class="fa fa-arrow-circle-up"></i></span>
-      <br/>
-     <span>90% Job completion Accuracy</span></h5>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Student Job</th>
+              <th scope="col">Percentage Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Reverse</td>
+              <td>90%</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Double</td>
+              <td>86%</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Encrypt</td>
+              <td>75%</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>Delete</td>
+              <td>65%</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>Replace</td>
+              <td>63%</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>Decrypt</td>
+              <td>62%</td>
+            </tr>
+        </table>
+        <canvas id="doughnutChart"></canvas>
     </div>
   </div>
   <footer class="foot-color">
@@ -126,8 +165,6 @@
           </div>
       </div>
     </div>
-
-
 </body>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <!-- Bootstrap tooltips -->
@@ -138,10 +175,24 @@
 <script type="text/javascript" src="js/mdb.min.js"></script>
 <script src="js/jquery.easypiechart.js"></script>
 <script>
-    $(function () {
-        $('.chart').easyPieChart({
-            //put options here
-        });
-    });
+//doughnut
+var ctxD = document.getElementById("doughnutChart").getContext('2d');
+var myLineChart = new Chart(ctxD, {
+type: 'doughnut',
+data: {
+    labels: ["Reverse", "Double", "Encrypt", "Delete", "Replace","Decrypt"],
+    datasets: [
+        {
+            data: [300, 250, 200, 150, 100, 50],
+            backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360","#FFFFFF"],
+            hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774","#F0FFF0"]
+        }
+    ]
+},
+options: {
+    responsive: true
+}
+});
 </script>
+
 </html>

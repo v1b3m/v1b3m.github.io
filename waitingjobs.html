@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/media-queries.css">
   <link rel="stylesheet" href="css/style.css">
-  <title>Home</title>
+    <title>Waiting with Priorities</title>
 </head>
 <body>
   <div class="container-fluid">
@@ -46,18 +47,79 @@
         <li class="nav-item">
           <a class="nav-link" href="ready_jobs.html">Ready Jobs</a>
         </li>
-
       </ul>
 
     </div>
     </nav>
-    <br/><br/>
+    <br>
+    <h1>Waiting Jobs with respective priorities</h1>
+    <br>
     <div class="text-center">
-      <h1>Average server processing</h1>
-        <span class="chart" data-percent="90"></span>
-      <h5><span>1000 Jobs/min <i class="fa fa-arrow-circle-up"></i></span>
-      <br/>
-     <span>90% Job completion Accuracy</span></h5>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Student Id</th>
+              <th scope="col">Job</th>
+              <th scope="col">Priority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>12687139923</td>
+              <td>Decrypt</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>82479346823</td>
+              <td>Replace</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>68236782309</td>
+              <td>Delete</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>18840374997</td>
+              <td>Encrypt</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>16839823783</td>
+              <td>Double</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>68719830991</td>
+              <td>Reverse</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>12683600991</td>
+              <td>Reverse</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>08319864991</td>
+              <td>Reverse</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>68349230991</td>
+              <td>Encrypt</td>
+              <td>8</td>
+            </tr>
+        </table>
     </div>
   </div>
   <footer class="foot-color">
@@ -126,22 +188,5 @@
           </div>
       </div>
     </div>
-
-
 </body>
-<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="js/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="js/mdb.min.js"></script>
-<script src="js/jquery.easypiechart.js"></script>
-<script>
-    $(function () {
-        $('.chart').easyPieChart({
-            //put options here
-        });
-    });
-</script>
 </html>

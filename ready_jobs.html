@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,12 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/media-queries.css">
   <link rel="stylesheet" href="css/style.css">
-  <title>Home</title>
+    <title>Waiting with Priorities</title>
 </head>
 <body>
   <div class="container-fluid">
@@ -46,20 +47,71 @@
         <li class="nav-item">
           <a class="nav-link" href="ready_jobs.html">Ready Jobs</a>
         </li>
-
       </ul>
 
     </div>
     </nav>
-    <br/><br/>
+    <br>
+    <h1>Ready Jobs</h1>
+    <br>
     <div class="text-center">
-      <h1>Average server processing</h1>
-        <span class="chart" data-percent="90"></span>
-      <h5><span>1000 Jobs/min <i class="fa fa-arrow-circle-up"></i></span>
-      <br/>
-     <span>90% Job completion Accuracy</span></h5>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Job Id</th>
+              <th scope="col">User Id</th>
+              <th scope="col">Job Type</th>
+              <th scope="col">Processing Duration</th>
+              <th scope="col">Time and Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">000767</th>
+              <td>408326487</td>
+              <td>Reverse</td>
+              <td>0.000007</td>
+              <td>2018-07-13 09:28:10</td>
+            </tr>
+            <tr>
+              <th scope="row">000768</th>
+              <td>137512622</td>
+              <td>Reverse</td>
+              <td>0.000003</td>
+              <td>2018-07-13 09:31:14</td>
+            </tr>
+            <tr>
+              <th scope="row">000769</th>
+              <td>1545543631</td>
+              <td>Double</td>
+              <td>0.000005</td>
+              <td>2018-07-13 09:31:21</td>
+            </tr>
+            <tr>
+              <th scope="row">000770</th>
+              <td>665602087</td>
+              <td>Delete</td>
+              <td>0.000014</td>
+              <td>2018-07-13 09:31:27</td>
+            </tr>
+            <tr>
+              <th scope="row">000771</th>
+              <td>1312043568</td>
+              <td>Encrypt</td>
+              <td>0.000037</td>
+              <td>2018-07-13 09:31:44</td>
+            </tr>
+            <tr>
+              <th scope="row">000775</th>
+              <td>882155557</td>
+              <td>Decrypt</td>
+              <td>0.000296</td>
+              <td>2018-07-13 09:32:58</td>
+            </tr>
+        </table>
     </div>
   </div>
+  <!-- Footer -->
   <footer class="foot-color">
     <div class="footer-top">
       <div class="container">
@@ -126,22 +178,16 @@
           </div>
       </div>
     </div>
-
-
+  </footer>
 </body>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="js/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="js/mdb.min.js"></script>
-<script src="js/jquery.easypiechart.js"></script>
-<script>
-    $(function () {
-        $('.chart').easyPieChart({
-            //put options here
-        });
-    });
-</script>
+<script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
+<script src="assets/js/jquery.backstretch.min.js"></script>
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/retina-1.1.0.min.js"></script>
+<script src="assets/js/scripts.js"></script>
 </html>
