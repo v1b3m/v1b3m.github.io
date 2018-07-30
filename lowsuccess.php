@@ -1,3 +1,36 @@
+<?php
+ $con = mysqli_connect("localhost","benjie","n0p@55w0RD","stringServer");
+ $query = "SELECT * FROM blacklist";
+ $data = mysqli_query($con, $query);
+
+ while($row = mysqli_fetch_array($data)){
+   $arr[] = $row['userId'];
+ }
+
+ $values = array_count_values($arr);
+ arsort($values);
+ $popular_with_count = array_slice($values,0,10,true);
+ $popular = array_keys($popular_with_count);
+ $popular_count = array_values($popular_with_count);
+
+ foreach($popular as $i) {
+   $query1 = "SELECT * FROM processed_jobs WHERE user_id = $i";
+   $data1 = mysqli_query($con,$query1);
+   $success_count[] = mysqli_num_rows($data1); 
+ }
+
+//  foreach($failedcount as $i)
+//  {
+//    echo $i." ";
+//  }
+
+ for($i=0;$i<10;$i++)
+ {
+   $average[] = $popular_count[$i]/($success_count[$i]+$popular_count[$i])*100;
+ }  
+ 
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -15,12 +48,14 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/media-queries.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   <title>Low Success Rating</title>
 </head>
 
 <body>
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img src="favicon.png" alt="" style="width:50px;height:50px;">
     <a class="navbar-brand" href="#">C-String&trade;</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -36,8 +71,8 @@
             Job ratings
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="highsuccess.html">Highest success rate</a>
-            <a class="dropdown-item" href="lowsuccess.html">Lowest success rate</a>
+            <a class="dropdown-item" href="highsuccess.php">Highest success rate</a>
+            <a class="dropdown-item" href="lowsuccess.php">Lowest success rate</a>
             <!-- <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a> -->
           </div>
@@ -61,40 +96,86 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Student Job</th>
-              <th scope="col">Percentage Rate</th>
+              <th scope="col">Failures</th>
+              <th scope="col">Successes</th>
+              <th scope="col">Percentage</th>
             </tr>
           </thead>
           <tbody>
+            <?php
+            echo '
             <tr>
               <th scope="row">1</th>
-              <td>Decrypt</td>
-              <td>52%</td>
+              <td>'.$popular[0].'</td>
+              <td>'.$popular_count[0].'</td>
+              <td>'.$success_count[0].'</td>
+              <td>'.round($average[0]).'%</td>
             </tr>
             <tr>
               <th scope="row">2</th>
-              <td>Replace</td>
-              <td>63%</td>
+              <td>'.$popular[1].'</td>
+              <td>'.$popular_count[1].'</td>
+              <td>'.$success_count[1].'</td>
+              <td>'.round($average[1]).'%</td>
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td>Delete</td>
-              <td>65%</td>
+              <td>'.$arr[2].'</td>
+              <td>'.$popular_count[2].'</td>
+              <td>'.$success_count[2].'</td>
+              <td>'.round($average[2]).'%</td>
             </tr>
             <tr>
               <th scope="row">4</th>
-              <td>Encrypt</td>
-              <td>75%</td>
+              <td>'.$popular[3].'</td>
+              <td>'.$popular_count[3].'</td>
+              <td>'.$success_count[3].'</td>
+              <td>'.round($average[3]).'%</td>
             </tr>
             <tr>
               <th scope="row">5</th>
-              <td>Double</td>
-              <td>86%</td>
+              <td>'.$popular[4].'</td>
+              <td>'.$popular_count[4].'</td>
+              <td>'.$success_count[4].'</td>
+              <td>'.round($average[4]).'%</td>
             </tr>
             <tr>
               <th scope="row">6</th>
-              <td>Reverse</td>
-              <td>90%</td>
+              <td>'.$popular[5].'</td>
+              <td>'.$popular_count[5].'</td>
+              <td>'.$success_count[5].'</td>
+              <td>'.round($average[5]).'%</td>
             </tr>
+            <tr>
+              <th scope="row">7</th>
+              <td>'.$popular[6].'</td>
+              <td>'.$popular_count[6].'</td>
+              <td>'.$success_count[6].'</td>
+              <td>'.round($average[6]).'%</td>
+            </tr>
+            <tr>
+              <th scope="row">8</th>
+              <td>'.$popular[7].'</td>
+              <td>'.$popular_count[7].'</td>
+              <td>'.$success_count[7].'</td>
+              <td>'.round($average[7]).'%</td>
+            </tr>
+            <tr>
+              <th scope="row">9</th>
+              <td>'.$popular[8].'</td>
+              <td>'.$popular_count[8].'</td>
+              <td>'.$success_count[8].'</td>
+              <td>'.round(average[8]).'%</td>
+            </tr>
+            <tr>
+              <th scope="row">10</th>
+              <td>'.$popular[9].'</td>
+              <td>'.$popular_count[9].'</td>
+              <td>'.$success_count[9].'</td>
+              <td>'.round($average[9]).'%</td>
+            </tr>';
+            ?>
+          </tbody>      
         </table>
         <canvas id="doughnutChart"></canvas>
     </div>
@@ -122,7 +203,7 @@
                   <p>
                     <a href="#"><i class="fab fa-facebook"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-google-plus-g"></i></a>
+          <a href="https://github.com/v1b3m/newSocket" target="_blank"><i class="fab fa-github-square"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-pinterest"></i></a>
                   </p>

@@ -1,6 +1,31 @@
-<!DOCTYPE html>
-<html>
+<?php
+  $con = mysqli_connect("localhost","benjie","n0p@55w0RD","stringServer")
+  or die('Unable to connect to database');
+  $query = "SELECT * FROM  processed_jobs"; // Values shoud be changed according to the DB
+  $data = mysqli_query($con, $query);
 
+  $num = 0;
+  $sum = 0;
+  while($row = mysqli_fetch_array($data)){
+    $num++;
+    $sum += $row['processing_duration'];
+  }
+
+  $completed = mysqli_num_rows($data);
+
+  $query1 = "SELECT * FROM blacklist";
+  $data1 = mysqli_query($con,$query1);
+
+  $failed = mysqli_num_rows($data1);
+
+  $completion = $completed/($completed + $failed)*100;
+
+  $average = $num/$sum;
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,16 +35,45 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/media-queries.css">
   <link rel="stylesheet" href="css/style.css">
-    <title>Waiting with Priorities</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <title>Home</title>
+  <script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	exportEnabled: true,
+	theme: "light1", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "Simple Column Chart showing average server processing speed"
+	},
+	data: [{
+		type: "line", //change type to bar, line, area, pie, etc
+		//indexLabel: "{y}", //Shows y value on all Data Points
+		indexLabelFontColor: "#5A5757",
+		indexLabelPlacement: "outside",
+		dataPoints: [
+			{ x: 0, y: 0 },
+			{ x: <?php echo $average; ?>, y: 1 },
+
+
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
 </head>
 <body>
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img src="favicon.png" alt="" style="width:50px;height:50px;">
     <a class="navbar-brand" href="#">C-String&trade;</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -28,15 +82,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Job ratings
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="highsuccess.html">Highest success rate</a>
-            <a class="dropdown-item" href="lowsuccess.html">Lowest success rate</a>
+            <a class="dropdown-item" href="highsuccess.php">Highest success rate</a>
+            <a class="dropdown-item" href="lowsuccess.php">Lowest success rate</a>
             <!-- <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a> -->
           </div>
@@ -45,73 +99,24 @@
           <a class="nav-link" href="waitingjobs.html">Waiting Jobs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="ready_jobs.html">Ready Jobs</a>
+          <a class="nav-link" href="ready_jobs.php">Ready Jobs</a>
         </li>
+
       </ul>
 
     </div>
     </nav>
-    <br>
-    <h1>Ready Jobs</h1>
-    <br>
+    <br/><br/>
     <div class="text-center">
-        <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Job Id</th>
-              <th scope="col">User Id</th>
-              <th scope="col">Job Type</th>
-              <th scope="col">Processing Duration</th>
-              <th scope="col">Time and Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">000767</th>
-              <td>408326487</td>
-              <td>Reverse</td>
-              <td>0.000007</td>
-              <td>2018-07-13 09:28:10</td>
-            </tr>
-            <tr>
-              <th scope="row">000768</th>
-              <td>137512622</td>
-              <td>Reverse</td>
-              <td>0.000003</td>
-              <td>2018-07-13 09:31:14</td>
-            </tr>
-            <tr>
-              <th scope="row">000769</th>
-              <td>1545543631</td>
-              <td>Double</td>
-              <td>0.000005</td>
-              <td>2018-07-13 09:31:21</td>
-            </tr>
-            <tr>
-              <th scope="row">000770</th>
-              <td>665602087</td>
-              <td>Delete</td>
-              <td>0.000014</td>
-              <td>2018-07-13 09:31:27</td>
-            </tr>
-            <tr>
-              <th scope="row">000771</th>
-              <td>1312043568</td>
-              <td>Encrypt</td>
-              <td>0.000037</td>
-              <td>2018-07-13 09:31:44</td>
-            </tr>
-            <tr>
-              <th scope="row">000775</th>
-              <td>882155557</td>
-              <td>Decrypt</td>
-              <td>0.000296</td>
-              <td>2018-07-13 09:32:58</td>
-            </tr>
-        </table>
+      <h1>Average server processing</h1>
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+        <!-- <span class="chart" data-percent="90"></span> -->
+
+      <br/><h5><span><?php echo round($average) .' jobs/s'; ?><i class="fa fa-arrow-circle-up"></i></span>
+      <br/><br/>
+     <span><?php echo round($completion); ?>% Job completion Accuracy</span></h5>
     </div>
   </div>
-  <!-- Footer -->
   <footer class="foot-color">
     <div class="footer-top">
       <div class="container">
@@ -135,7 +140,7 @@
                   <p>
                     <a href="#"><i class="fab fa-facebook"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-google-plus-g"></i></a>
+          <a href="https://github.com/v1b3m/newSocket" target="_blank"><i class="fab fa-github-square"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-pinterest"></i></a>
                   </p>
@@ -178,16 +183,24 @@
           </div>
       </div>
     </div>
-  </footer>
+
+
 </body>
+
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="js/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script src="assets/js/jquery-migrate-3.0.0.min.js"></script>
-<script src="assets/js/jquery.backstretch.min.js"></script>
-<script src="assets/js/wow.min.js"></script>
-<script src="assets/js/retina-1.1.0.min.js"></script>
-<script src="assets/js/scripts.js"></script>
+<!-- MDB core JavaScript -->
+<!-- <script type="text/javascript" src="js/mdb.min.js"></script> -->
+<!-- <script src="js/jquery.easypiechart.js"></script> -->
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<!-- <script>
+    $(function () {
+        $('.chart').easyPieChart({
+            //put options here
+        });
+    });
+</script> -->
 </html>
