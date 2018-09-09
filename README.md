@@ -27,3 +27,5 @@ The pages are hosted on github pages, use this [link](https://v1b3m.github.io/).
 * Kasemire Alicia
 * Iradukunda Jean
 * Katwere Leo
+* Julian Asiimwe
+* Muwanguzi Paul
