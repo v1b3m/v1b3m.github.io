@@ -29,8 +29,10 @@ header {
   left: 0;
   width: 100%;
   z-index: 5;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
 }
-
 header .navbar-brand {
   text-transform: uppercase;
   letter-spacing: .2em;
