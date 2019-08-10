@@ -225,10 +225,15 @@
                         Don't forget to hit send when you're done.
                     </p>
                     <form id="form">
-                        <p><label>Your Name</label><input type="text" /></p>
-                        <p><label>Your Email</label><input type="text" /></p>
-                        <p><label>Your Message</label><textarea></textarea></p>
-                        <p><button type="button" onclick="">Submit</button></p>
+                        <p><label>Your Name</label><input onblur="checkText('name')" type="text" id="name"/>
+                            <span class="error" id="name-error" style="display: hidden; color: red"></span>
+                        </p>
+                        <p><label>Your Email</label><input onblur="checkEmail()" type="text" id="email"/>
+                            <span class="error" id="email-error" style="display: hidden; color: red"></span>
+                        </p>
+                        <p><label>Your Message</label><textarea onblur="checkText('message')" id="message"></textarea>
+                            <span class="error" id="message-error" style="display: hidden; color: red"></span></p>
+                        <p><button id="submit" type="button" onclick="sendEmail()">Submit</button></p>
                     </form>
                 </div>
             </div>
