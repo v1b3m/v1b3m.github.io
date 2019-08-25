@@ -145,6 +145,17 @@ header a:hover {
 
 .error {
     font-size: 12px;
+    display: hidden;
+    color: red;
+}
+
+.gen_error {
+    width: 100%;
+    border: solid 1px;
+    padding: 5px;
+    font-size: 15px;
+    display: none;
+    color: red;
 }
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */

@@ -216,6 +216,14 @@
 
             <div id="connect" class="panel">
                 <div class="content">
+                    <span class="gen_error" id="general-error"></span>
+                    <a
+                    style="text-align: left"
+                    href="javascript:void(0)"
+                    class="closebtn"
+                    onclick="closeNav()"
+                    >&times;</a
+                >
                     <h1>Talk To Me!</h1>
                     <p>
                         Here, you can say whatever you want! Like, what your
@@ -226,13 +234,13 @@
                     </p>
                     <form id="form">
                         <p><label>Your Name</label><input onblur="checkText('name')" type="text" id="name"/>
-                            <span class="error" id="name-error" style="display: hidden; color: red"></span>
+                            <span class="error" id="name-error" ></span>
                         </p>
                         <p><label>Your Email</label><input onblur="checkEmail()" type="text" id="email"/>
-                            <span class="error" id="email-error" style="display: hidden; color: red"></span>
+                            <span class="error" id="email-error"></span>
                         </p>
                         <p><label>Your Message</label><textarea onblur="checkText('message')" id="message"></textarea>
-                            <span class="error" id="message-error" style="display: hidden; color: red"></span></p>
+                            <span class="error" id="message-error" ></span></p>
                         <p><button id="submit" type="button" onclick="sendEmail()">Submit</button></p>
                     </form>
                 </div>

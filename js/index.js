@@ -32,6 +32,7 @@ const sendEmail = () => {
     const message = document.getElementById('message').value;
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
+    const generalError = document.getElementById('general-error');
     const url =
         'https://us-central1-personal-website-249113.cloudfunctions.net/send-email';
 
@@ -39,6 +40,7 @@ const sendEmail = () => {
         fetch(url, {
             // mode: 'cors',
             method: 'POST',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -52,6 +54,8 @@ const sendEmail = () => {
                 console.log('Response', response);
             })
             .catch(error => {
+                generalError.style.display = 'block';
+                generalError.innerHTML = error;
                 console.log('Error', error);
             });
     }
