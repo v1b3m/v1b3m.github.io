@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "prepare": "husky install",
-    "export": "next export"
+    "export": "next export -o ./docs"
   },
   "dependencies": {
     "@babel/core": "^7.17.8",
