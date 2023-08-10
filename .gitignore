@@ -41,5 +41,3 @@ dist
 # sonar-qube
 .scannerwork
 sonar-project.properties
-
-.test
