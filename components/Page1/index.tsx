@@ -44,7 +44,10 @@ export default function Page1(): JSX.Element {
       <Button
         variant="main"
         size="lg"
-        onClick={() => openInNewTab(`mailto: ${emailAddress}`)}
+        onClick={() => {
+          console.log("clicked");
+          openInNewTab(`mailto: ${emailAddress}`);
+        }}
       >
         Reach Out
       </Button>
